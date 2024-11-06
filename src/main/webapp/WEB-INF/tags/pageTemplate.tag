@@ -13,7 +13,7 @@
 <jsp:doBody/>
 <footer class="container">
 
-        <p>&copy; Toader Anton-Ilie </p>
+        <p style="text-align: center;">&copy; Toader Anton-Ilie </p>
 </footer>
 </main>
 
