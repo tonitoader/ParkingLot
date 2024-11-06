@@ -9,13 +9,12 @@
 </head>
 <body>
 <jsp:include page="/WEB-INF/Page/Menu.jsp" />
+
 <main class="container-fluid mt-5">
 <jsp:doBody/>
-<footer class="container">
 
-        <p style="text-align: center;">&copy; Toader Anton-Ilie </p>
-</footer>
 </main>
+<jsp:include page="/WEB-INF/footer.jsp"/>
 
 </body>
 </html>
