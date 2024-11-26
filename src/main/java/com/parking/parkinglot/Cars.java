@@ -1,5 +1,6 @@
 package com.parking.parkinglot;
 import com.parking.parkinglot.common.CarDto;
+import com.parking.parkinglot.ejb.CarsBean;
 import jakarta.inject.Inject;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
@@ -24,5 +25,5 @@ public class Cars extends HttpServlet {
             response) throws ServletException, IOException {
     }
     @Inject
-    Cars carsBean;
+    CarsBean carsBean;
 }
