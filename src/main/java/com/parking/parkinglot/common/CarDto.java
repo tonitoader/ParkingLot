@@ -15,7 +15,6 @@ public class CarDto {
     public Long getId() {
         return id;
     }
-
     public String getLicensePlate() {
         return licensePlate;
     }

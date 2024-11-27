@@ -1,6 +1,8 @@
 package com.parking.parkinglot;
 import com.parking.parkinglot.common.CarDto;
+import com.parking.parkinglot.common.UserDto;
 import com.parking.parkinglot.ejb.CarsBean;
+import com.parking.parkinglot.ejb.UserBean;
 import jakarta.inject.Inject;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
@@ -8,16 +10,17 @@ import jakarta.servlet.annotation.*;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "Cars", value = "/Cars")
-public class Cars extends HttpServlet {
+@WebServlet(name = "Users", value = "/Users")
+public class Users extends HttpServlet {
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse
             response) throws ServletException, IOException {
-        request.getRequestDispatcher("/WEB-INF/pages/cars.jsp").forward(request,response);
-        List<CarDto> cars = carsBean.findAllCars();
-        request.setAttribute("cars", cars);
-        request.setAttribute("numberOfFreeParkingSpots", cars.size());
-        request.getRequestDispatcher("/WEB-INF/pages/cars.jsp").forward(request,response);
+        request.getRequestDispatcher("/WEB-INF/pages/users.jsp").forward(request,response);
+        List<UserDto> users = usersBean.getAllUsers();
+        request.setAttribute("users", users);
+        request.setAttribute("numberOfUsers", users.size() );
+        request.getRequestDispatcher("/WEB-INF/pages/users.jsp").forward(request,response);
     }
 
     @Override
@@ -25,5 +28,5 @@ public class Cars extends HttpServlet {
             response) throws ServletException, IOException {
     }
     @Inject
-    CarsBean carsBean;
+    UserBean usersBean;
 }
