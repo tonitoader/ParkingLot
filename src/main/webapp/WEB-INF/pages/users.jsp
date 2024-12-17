@@ -5,10 +5,10 @@
     <h1>Users</h1>
     <div class="container text-center">
     <c:forEach var="user" items="${users}">
-        <div class="row">
+        <div class="col">
         ${user.username}
         </div>
-        <div class="col">
+        <div class="row">
         ${user.email}
         </div>
     </c:forEach>
