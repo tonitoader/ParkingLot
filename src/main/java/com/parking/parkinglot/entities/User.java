@@ -1,7 +1,6 @@
 package com.parking.parkinglot.entities;
 
 import jakarta.persistence.*;
-
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -40,7 +39,10 @@ public class User {
     public String getEmail() {
         return email;
     }
-    public void setEmail(String email) {}
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
     private String password;
 
@@ -55,5 +57,8 @@ public class User {
     public String getPassword() {
         return "";
     }
-    public void setPassword(String password) {}
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }
