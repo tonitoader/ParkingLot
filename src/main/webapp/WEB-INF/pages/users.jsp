@@ -12,15 +12,15 @@
         <div class="container text-center">
             <c:forEach var="user" items="${users}">
                 <div class="row align-items-center mb-2">
-                    <!-- Checkbox pentru fiecare utilizator -->
+
                     <div class="col-1">
                         <input type="checkbox" name="user_ids" value="${user.id}" />
                     </div>
-                    <!-- Afișarea username-ului -->
+
                     <div class="col-4">
                             ${user.username}
                     </div>
-                    <!-- Afișarea email-ului -->
+
                     <div class="col-4">
                             ${user.email}
                     </div>
@@ -29,4 +29,12 @@
         </div>
 
     </form>
+    <c:if test="${not empty invoices}">
+        <h2>Invoices</h2>
+        <c:forEach var="username" items="${invoices}" varStatus="status">
+            ${status.index + 1}.${username}
+            </br>
+
+        </c:forEach>
+    </c:if>
 </t:pageTemplate>

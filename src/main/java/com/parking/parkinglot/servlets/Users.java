@@ -1,5 +1,6 @@
 package com.parking.parkinglot.servlets;
 import com.parking.parkinglot.common.UserDto;
+import com.parking.parkinglot.ejb.InvoiceBean;
 import com.parking.parkinglot.ejb.UserBean;
 import com.parking.parkinglot.ejb.CarsBean;
 import jakarta.annotation.security.DeclareRoles;
@@ -8,6 +9,7 @@ import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 import java.io.IOException;
+import java.util.Collection;
 import java.util.List;
 @DeclareRoles({"READ_USERS", "WRITE_USERS"})
 @ServletSecurity(value = @HttpConstraint(rolesAllowed = {"READ_USERS"}),
@@ -15,13 +17,18 @@ import java.util.List;
 
 @WebServlet(name = "Users", value = "/Users")
 public class Users extends HttpServlet {
-
+    @Inject
+    InvoiceBean invoiceBean;
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse
             response) throws ServletException, IOException {
         List<UserDto> users = usersBean.getAllUsers();
         request.setAttribute("users", users);
-        request.setAttribute("numberOfUsers", users.size() );
+
+        if(!invoiceBean.getUserIds().isEmpty()){
+            Collection<String> usernames = usersBean.findUsernamesByUserIds(invoiceBean.getUserIds());
+            request.setAttribute("invoice", usernames);
+        }
         request.getRequestDispatcher("/WEB-INF/pages/users.jsp").forward(request,response);
     }
 
