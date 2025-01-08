@@ -1,6 +1,8 @@
 package com.parking.parkinglot.entities;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -17,7 +19,8 @@ public class User {
 
     @OneToMany(mappedBy = "owner", orphanRemoval = true)
     private Collection<Car> cars = new ArrayList<>();
-
+    @Basic
+    @Column(unique = true, nullable = false, length = 100)
     public String getUsername() {
         return username;
     }
@@ -35,7 +38,8 @@ public class User {
     }
 
     private String email;
-
+    @Email
+    @Column(unique = true, nullable = false, length = 100)
     public String getEmail() {
         return email;
     }

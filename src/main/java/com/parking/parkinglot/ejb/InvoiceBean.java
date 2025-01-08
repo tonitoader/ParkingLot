@@ -27,17 +27,4 @@ public class InvoiceBean implements Serializable {
     }
 
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String[] userIdsAsString = request.getParameterValues("user_ids");
-        if (userIdsAsString != null) {
-            List<Long> userIds = new ArrayList<>();
-            for (String userIdAsString : userIdsAsString) {
-                userIds.add(Long.parseLong(userIdAsString));
-            }
-            invoiceBean.getUserIds().addAll(userIds);
-        }
-        response.sendRedirect(request.getContextPath() + "/Users");
-    }
-
-
 }
