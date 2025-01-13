@@ -1,14 +1,14 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <t:pageTemplate pageTitle="Users">
     <h1>Users</h1>
-    <c:if test="${pageContext.request.isUserInRole('WRITE_USERS')}">
-        <a class="w-15 btn btn-primary btn-lg" href="${pageContext.request.contextPath}/AddUser">Add User</a>
-        <button type="submit" class="btn btn-secondary">Invoice</button>
-    </c:if>
-
     <form method="POST" action="${pageContext.request.contextPath}/Users">
+        <c:if test="${pageContext.request.isUserInRole('WRITE_USERS')}">
+            <a class="w-15 btn btn-primary btn-lg" href="${pageContext.request.contextPath}/AddUser">Add User</a>
+            <button type="submit" class="btn btn-danger">Invoice</button>
+        </c:if>
         <div class="container text-center">
             <c:forEach var="user" items="${users}">
                 <div class="row align-items-center mb-2">
@@ -33,7 +33,7 @@
         <h2>Invoices</h2>
         <c:forEach var="username" items="${invoices}" varStatus="status">
             ${status.index + 1}.${username}
-            </br>
+            <br/>
 
         </c:forEach>
     </c:if>

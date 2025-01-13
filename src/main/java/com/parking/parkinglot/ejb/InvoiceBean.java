@@ -15,7 +15,6 @@ import java.util.ArrayList;
 @Stateful
 @SessionScoped
 public class InvoiceBean implements Serializable {
-    InvoiceBean invoiceBean;
     Set<Long> userIds= new HashSet<>();
 
     public Set<Long> getUserIds() {
